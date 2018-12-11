@@ -12,7 +12,8 @@ def zigzag(a):
         elif (previous < current> next) or (previous > current < next):
             subzag.append(current)
         else:
-            subzag = current
+            subzag = [current]
             if current != next:
                 subzag.append(next)
     return subzag
+zigzag([9, 8, 8, 5, 3, 5, 3, 2, 8, 6])
