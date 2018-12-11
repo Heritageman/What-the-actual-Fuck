@@ -1,19 +1,19 @@
 def zigzag(a):
     subzag = [a[0]]
     count = 0
+    longestzag = 0
     for x in range(len(a)-1):
         previous = a[x-1]
         current = a[x]
         next = a[x+1]
-        if x == 0:
+        if x == 0: #Dealing with first number in the array
             if current != next:
                 subzag.append(next)
                 longestzag = len(subzag)
-        elif (previous < current> next) or (previous > current < next):
+        elif (previous < current> next) or (previous > current < next): #Determine if a number is in a zigzag
             subzag.append(current)
         else:
-            subzag = [current]
+            subzag == current
             if current != next:
                 subzag.append(next)
-    return subzag
-zigzag([9, 8, 8, 5, 3, 5, 3, 2, 8, 6])
+    return longestzag
