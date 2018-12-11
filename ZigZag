@@ -9,6 +9,10 @@ def zigzag(a):
             if current != next:
                 subzag.append(next)
                 longestzag = len(subzag)
-        elif previous < current> next or previous > current < next:
+        elif (previous < current> next) or (previous > current < next):
             subzag.append(current)
-        
+        else:
+            subzag = current
+            if current != next:
+                subzag.append(next)
+    return subzag
