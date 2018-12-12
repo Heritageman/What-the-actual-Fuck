@@ -1,0 +1,42 @@
+def reverseParentheses(s):
+    k = []
+    if s.count('(')==0 and s.count(')') == 0: #For if there are no parentheses
+        return s
+    elif s.count('(') ==1 and s.count(')')==1: #For if there is one set of parentheses
+        x = s.index("(") #Find the values for the parentheses in s
+        y = s.index(")")
+        s = list(s) #Change s to a list so it can be mutable
+        for value in s[(x+1):y]: #Finding the values inside the parentheses
+            k.append(value) #Moving these values to an empty list
+            s.pop(s.index(value)) #Removing them from the current list
+        k.reverse() #Reverse the values
+        for value in k:
+            x = x+1
+            s.insert(x,value) 
+        s.remove('(')
+        s.remove(')')
+        s = ''.join(s)
+        return s
+    elif s.count('(') >=2 and s.count(')')>=2: #Trying to figure out what to do with multiple parentheses 
+        index_x = [i for i, x in enumerate(s) if x == '('] #Find all values where there are parentheses
+        index_y = [i for i, x in enumerate(s) if x == ')']
+        s = list(s) #Change s into a list to make it mutable
+        z = -1
+        if index_x[0] == 0: #If the first set of parentheses exist outside the quotations
+            pop.index_x(index_x[0]) 
+            pop.index_y(index_y[-1])
+        for i in range(len(index_x)): #Limiting function and providing value for second parentheses
+            k = []      #Reset k to an empty list for the next set of parentheses
+            x = index_x[z] #The last right facing parentheses should be innermost
+            y = index_y[i] #The first left facing parentheses should be outermost
+            for value in s[x+1:y]:
+                k.append(value)
+                s.remove(value)
+            for q in k:
+                s.insert(x+1,q)
+            z-=1
+    for i in range(len(index_x)):
+        s.remove('(')
+        s.remove(')')
+    s = ''.join(s)
+    return s
